@@ -17,7 +17,7 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('type')->default(TypeWeb::WEB_CUSTOMER)->comment('0:users,1:admins');
+            $table->tinyInteger('type')->default(TypeWeb::WEB_CUSTOMER)->comment('0:customer,1:admins');
             $table->tinyInteger('status');
             $table->timestamps();
             $table->softDeletes();

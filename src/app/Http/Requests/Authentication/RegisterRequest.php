@@ -5,7 +5,7 @@ namespace App\Http\Requests\Authentication;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class LoginRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
 
     /**
@@ -16,11 +16,18 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required|string|max:255',
             'email' => 'required|email:rfc,dns',
             'password' => [
                 'required',
+                'confirmed',
                 Password::min(8)
-            ]
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+            ],
         ];
     }
 }

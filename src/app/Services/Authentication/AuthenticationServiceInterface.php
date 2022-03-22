@@ -14,4 +14,6 @@ interface AuthenticationServiceInterface
     public function generateRefreshToken(): string;
 
     public function logout(string $guard);
+
+    public function customerLogin(array $data, string $guard);
 }

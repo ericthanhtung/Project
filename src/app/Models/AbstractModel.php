@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class AbstractModel
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method Builder filterBy(array $filterData, array $filterFields)
  * @method Builder searchByAndOperator(array $searchData, array $searchFields)
  */
-abstract class AbstractModel extends Model
+abstract class AbstractModel extends Authenticatable
 {
     //
 }

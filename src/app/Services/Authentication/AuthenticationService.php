@@ -71,4 +71,22 @@ class AuthenticationService extends AbstractService implements AuthenticationSer
             return false;
         }
     }
+
+    public function customerLogin(array $data, string $guard)
+    {
+        try {
+            if (Auth::guard($guard)->attempt([
+                    'email' => $data['email'],
+                    'password' => $data['password'],
+                    'status' => 1
+                ]) &&
+                Auth::guard($guard)->user()->role->status == Status::PUBLIC
+            ) {
+                return Auth::guard($guard)->user();
+            }
+        } catch (\Exception $e) {
+            report($e);
+            return false;
+        }
+    }
 }
